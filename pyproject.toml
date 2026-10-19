@@ -1,0 +1,85 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "caba-espacios-verdes"
+version = "0.1.0"
+description = "Access to public green space in Ciudad Autónoma de Buenos Aires"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Esteban Carisimo", email = "esteban.carisimo@northwestern.edu"},
+]
+maintainers = [
+    {name = "Esteban Carisimo", email = "esteban.carisimo@northwestern.edu"},
+]
+keywords = [
+    "buenos-aires",
+    "caba",
+    "green-space",
+    "openstreetmap",
+    "accessibility",
+    "2sfca",
+    "census",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: GIS",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "contextily>=1.4",
+    "folium>=0.15",
+    "geopandas>=0.14",
+    "matplotlib>=3.7",
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "pystac-client>=0.7",
+    "rasterio>=1.3",
+    "shapely>=2.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/estcarisimo/caba-espacios-verdes"
+Repository = "https://github.com/estcarisimo/caba-espacios-verdes"
+"Bug Reports" = "https://github.com/estcarisimo/caba-espacios-verdes/issues"
+
+[project.scripts]
+caba-espacios-verdes = "caba_espacios_verdes.cli:main"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.0",
+    "pytest>=8.0",
+    "ruff>=0.8",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/caba_espacios_verdes"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/caba_espacios_verdes/queries/q_boundary.txt" = "caba_espacios_verdes/queries/q_boundary.txt"
+"src/caba_espacios_verdes/queries/q_green.txt" = "caba_espacios_verdes/queries/q_green.txt"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "PTH"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["caba_espacios_verdes"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
