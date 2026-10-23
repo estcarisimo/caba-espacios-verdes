@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "CABA Espacios Verdes: Access to Public Green Space in Buenos Aires"
+abstract: >-
+  Pipeline for access to public green space in Ciudad Autónoma de Buenos Aires.
+  It downloads parks and plazas from OpenStreetMap, buffers each one by 500 m,
+  weights the gap by the INDEC 2022 census, estimates accessible square metres
+  per resident with a two-step floating catchment area, and repeats that metric
+  on vegetated area from a Sentinel-2 NDVI composite.
+authors:
+  - family-names: Carisimo
+    given-names: Esteban
+    email: esteban.carisimo@northwestern.edu
+    affiliation: Northwestern University
+repository-code: https://github.com/estcarisimo/caba-espacios-verdes
+url: https://github.com/estcarisimo/caba-espacios-verdes
+license: MIT
+version: 0.1.0
+date-released: "2026-10-19"
+keywords:
+  - buenos-aires
+  - caba
+  - green-space
+  - openstreetmap
+  - accessibility
+  - 2sfca
+  - census
